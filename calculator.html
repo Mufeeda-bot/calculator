@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/free-photo/blue-office-stationery-with-copy-space_23-2148475340.jpg?size=626&ext=jpg'); 
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Calculator</h5>
+                    <input type="text" class="form-control mb-2" name="value1" id="value1" placeholder="Enter first value">
+                    <input type="text" class="form-control mb-2" name="value2" id="value2" placeholder="Enter second value">
+                    <select class="form-control mb-2" id="operator">
+                        <option>+</option>
+                        <option>-</option>
+                        <option>*</option>
+                        <option>/</option>
+                    </select>
+                    <button type="button" class="btn btn-primary btn-block mb-2" onclick="calculate()">Calculate</button>
+                    <input type="text" class="form-control" name="value3" id="value3" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (Optional) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    function calculate() {
+        var a = parseInt(document.getElementById("value1").value);
+        var b = parseInt(document.getElementById("value2").value);
+        var operator = document.getElementById("operator").value;
+        if (operator === "+") {
+            add(a, b);
+        } else if (operator === "-") {
+            sub(a, b);
+        } else if (operator === "*") {
+            mul(a, b);
+        } else if (operator === "/") {
+            div(a, b);
+        }
+    }
+
+    function add(a, b) {
+        document.getElementById("value3").value = a + b;
+    }
+
+    function sub(a, b) {
+        document.getElementById("value3").value = a - b;
+    }
+
+    function mul(a, b) {
+        document.getElementById("value3").value = a * b;
+    }
+
+    function div(a, b) {
+        if (b === 0) {
+            document.getElementById("value3").value = "Cannot divide by zero";
+        } else {
+            document.getElementById("value3").value = a / b;
+        }
+    }
+</script>
+</body>
+</html>
